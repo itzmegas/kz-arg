@@ -13,6 +13,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Kz Argentina",
   description: "La vuelta de Kz Argentina",
+  icons: {
+    icon: "/kz.png",
+  },
 };
 
 export default function RootLayout({
@@ -20,12 +23,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const defaultColorScheme = "dark";
+  const defaultColorScheme = "light";
 
   return (
     <html lang="en">
       <head>
         <ColorSchemeScript />
+        <link rel="shortcut icon" href="/kz-lg.svg" />
       </head>
       <body className={inter.className}>
         <Providers defaultColorScheme={defaultColorScheme}>
