@@ -1,6 +1,7 @@
 "use client";
 
 import { type ReactNode } from "react";
+
 import {
   MantineProvider,
   defaultCssVariablesResolver,
@@ -9,6 +10,8 @@ import {
 import { ModalsProvider } from "@mantine/modals";
 
 import { theme } from "@/theme";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@/lib/react-query";
 
 type ProvidersProps = {
   children: ReactNode;
@@ -20,12 +23,14 @@ export default function Providers({
   children,
 }: ProvidersProps) {
   return (
-    <MantineProvider
-      theme={theme}
-      defaultColorScheme={defaultColorScheme}
-      cssVariablesResolver={defaultCssVariablesResolver}
-    >
-      <ModalsProvider>{children}</ModalsProvider>
-    </MantineProvider>
+    <QueryClientProvider client={queryClient}>
+      <MantineProvider
+        theme={theme}
+        defaultColorScheme={defaultColorScheme}
+        cssVariablesResolver={defaultCssVariablesResolver}
+      >
+        <ModalsProvider>{children}</ModalsProvider>
+      </MantineProvider>
+    </QueryClientProvider>
   );
 }

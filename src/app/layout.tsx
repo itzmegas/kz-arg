@@ -7,6 +7,8 @@ import { theme } from "@/theme";
 
 import "@mantine/core/styles.css";
 import "./globals.css";
+import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
+import { queryClient } from "@/lib/react-query";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +35,9 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Providers defaultColorScheme={defaultColorScheme}>
-          <Layout>{children}</Layout>
+          <HydrationBoundary state={dehydrate(queryClient)}>
+            <Layout>{children}</Layout>
+          </HydrationBoundary>
         </Providers>
       </body>
     </html>

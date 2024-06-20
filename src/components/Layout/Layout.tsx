@@ -10,7 +10,7 @@ import {
   UnstyledButton,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import Header from "./Header";
+import Header from "./components/Header";
 
 export default function Layout({
   children,
